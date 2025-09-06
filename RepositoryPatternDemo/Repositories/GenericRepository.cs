@@ -24,6 +24,18 @@ namespace RepositoryPatternDemo.Repositories
         {
             await _dbSet.AddAsync(entity);
         }
+        public async Task UpdateAsync(T entity)
+        {
+            _dbSet.Update(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync(T entity)
+        {
+            _dbSet.Remove(entity);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task SaveAsync()
         {
             await _context.SaveChangesAsync();

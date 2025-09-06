@@ -37,4 +37,24 @@ public class ProductsController : ControllerBase
         await _repository.SaveAsync();
         return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
     }
+
+    [HttpPost]  
+    [Route("Update/{id}")]
+    public async Task<IActionResult> Update(int id, Product product)
+    {
+        if (id != product.Id) return BadRequest();
+        await _repository.UpdateAsync(product);
+        return NoContent();
+    }
+    [HttpPost]
+    [Route("Delete/{id}")]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var product = await _repository.GetByIdAsync(id);
+        if (product == null) return NotFound();
+        await _repository.DeleteAsync(product);
+        return NoContent();
+    }
+
+
 }
