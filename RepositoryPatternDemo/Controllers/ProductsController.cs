@@ -8,9 +8,9 @@ namespace RepositoryPatternDemo.Controllers;
 [ApiController]
 public class ProductsController : ControllerBase
 {
-    private readonly IProductRepository _repository;
+    private readonly IGenericRepository<Product> _repository;
 
-    public ProductsController(IProductRepository repository)
+    public ProductsController(IGenericRepository<Product> repository)
     {
         _repository = repository;
     }

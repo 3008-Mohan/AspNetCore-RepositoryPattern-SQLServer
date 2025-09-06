@@ -7,8 +7,8 @@ namespace RepositoryPatternDemo.Controllers
 {
     public class CustomersController: ControllerBase
     {
-        private readonly ICustomerRepository _repository;
-        public CustomersController(ICustomerRepository repository)
+        private readonly IGenericRepository<Customer> _repository;
+        public CustomersController(IGenericRepository<Customer> repository)
         {
             _repository = repository;
         }
